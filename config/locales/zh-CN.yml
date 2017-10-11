@@ -3,4 +3,5 @@
   hello: "qin~ %{name} 你好"
   admin:
 
-    event_list: 活动列表管理1
+    event_list: 活动列表管理
+  status: "状态"
