@@ -14,7 +14,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 
 gem 'rails-i18n'
-
+gem 'pry'
 gem 'devise-i18n'
 gem 'select2-rails'
 gem 'nested_form_fields'
