@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def edit
     @user=User.find(params[:id])
     @user.create_profile unless @user.profile
-    binding.pry
+
   end
   def update
 
