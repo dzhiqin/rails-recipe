@@ -47,6 +47,25 @@ class Admin::EventsController < AdminController
     redirect_to admin_events_path
   end
 
+  def bulk_update
+    total=0
+    binding.pry
+    Array(params[:ids]).each do |event_id|
+      event=Event.find(event_id)
+      if params[:commit]==I18n.t(:bulk_update)
+        event.status=params[:event_status]
+        if event.save
+          total +=1
+        end
+      elsif params[:commit]==I18n.t(:bulk_delete)
+        event.destroy
+        binding.pry
+        total +=1
+      end
+    end
+    flash[:alert]="成功编辑#{total}笔资料"
+    redirect_to admin_events_path
+  end
   protected
 
   def event_params
