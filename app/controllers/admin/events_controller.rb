@@ -1,7 +1,7 @@
 class Admin::EventsController < AdminController
 
   def index
-    @events = Event.all
+    @events = Event.rank(:row_order).all
   end
 
   def show
@@ -64,6 +64,12 @@ class Admin::EventsController < AdminController
       end
     end
     flash[:alert]="成功编辑#{total}笔资料"
+    redirect_to admin_events_path
+  end
+  def reorder
+    @event=Event.find_by_friendly_id!(params[:id])
+    @event.row_order_position=params[:position]
+    @event.save
     redirect_to admin_events_path
   end
   protected

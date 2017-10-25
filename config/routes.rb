@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :events
+  resources :events do
+    resources :registrations
+  end
   resources :users
   namespace :admin do
     root "events#index"
@@ -10,6 +12,9 @@ Rails.application.routes.draw do
       resources :tickets,:controller=>"event_tickets"
       collection do
         post :bulk_update
+      end
+      member do
+        post :reorder
       end
     end
     resources :categories

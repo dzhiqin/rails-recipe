@@ -3,3 +3,12 @@
 @import "select2";
 @import "select2-bootstrap";
 @import "bootstrap-datepicker3";
+
+
+.sortable .sortbale_icon {
+  border: none;
+  color: #ECECEC;
+  font-size: 20px;
+  cursor: move;
+  padding-right:10px;
+}
