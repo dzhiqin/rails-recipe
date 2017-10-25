@@ -14,6 +14,7 @@
   <%=f.text_field :cellphone,:class=>"form-control"%>
 </div>
 <div class="form-s">
+  <%=link_to 'Privious',step1_event_registration_path(@event,@registration),:class=>"btn btn-primary"%>
   <%=f.submit "Save&Next",:class=>"btn btn-primary"%>
 </div>
 <% end %>
