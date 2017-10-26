@@ -11,6 +11,9 @@ class Registration < ApplicationRecord
   belongs_to :user, :optional=>true
   before_validation :generate_uuid, :on=>:create
   validate :check_event_status,:on=>:create
+
+  scope :by_status,->(s){where(:status=>s)}
+  scope :by_ticket,->(t){where(:ticket_id=>t)}
   def to_param
     self.uuid
   end
