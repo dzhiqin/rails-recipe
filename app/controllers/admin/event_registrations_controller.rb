@@ -4,9 +4,16 @@ class Admin::EventRegistrationsController < AdminController
     @registrations=@event.registrations.includes(:ticket).order("id DESC").page(params[:page]).per(10)
     if params[:status].present? && Registration::STATUS.include?(params[:status])
       @registrations=@registrations.by_status(params[:status])
+      # @registrations=@registrations.where(:status=>params[:status])
     end
     if params[:ticket_id].present?
       @registrations=@registrations.by_ticket(params[:ticket_id])
+    end
+    if Array(params[:statuses]).any?
+      @registrations=@registrations.by_status(params[:statuses])
+    end
+    if Array(params[:ticket_ids]).any?
+      @registrations=@registrations.by_ticket(params[:ticket_ids])
     end
   end
   def destroy
