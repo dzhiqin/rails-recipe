@@ -1,17 +1,23 @@
 <h1><%=@event.name%></h1>
 <h2>Step 2</h2>
+
 <%=form_for @registration,:url=>update_step2_event_registration_path(@event,@registration) do |f| %>
-<div class="form-group">
-  <%=f.label :name%>
-  <%=f.text_field :name,:class=>"form-control"%>
+<div class="form-group <%=(f.object.errors[:name].any?)? "has-error" : ""%>">
+  <%=f.label :name,"姓名",:class=>"control-label"%>
+  <%=f.text_field :name,:class=>"form-control",:required=>true,:autofocus=>true%>
+  <% if f.object.errors[:name] %>
+    <span class="help-block">
+      <%=safe_join(f.object.errors[:name],"、")%>
+    </span>
+  <% end %>
 </div>
 <div class="form-group">
   <%=f.label :email%>
-  <%=f.email_field :email,:class=>"form-control"%>
+  <%=f.email_field :email,:class=>"form-control",:required=>true%>
 </div>
 <div class="form-group">
   <%=f.label :cellphone%>
-  <%=f.text_field :cellphone,:class=>"form-control"%>
+  <%=f.text_field :cellphone,:class=>"form-control",:required=>true%>
 </div>
 <div class="form-s">
   <%=link_to 'Privious',step1_event_registration_path(@event,@registration),:class=>"btn btn-primary"%>
