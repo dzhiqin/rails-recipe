@@ -49,7 +49,7 @@ class Admin::EventsController < AdminController
 
   def bulk_update
     total=0
-    binding.pry
+
     Array(params[:ids]).each do |event_id|
       event=Event.find(event_id)
       if params[:commit]==I18n.t(:bulk_update)
@@ -59,7 +59,7 @@ class Admin::EventsController < AdminController
         end
       elsif params[:commit]==I18n.t(:bulk_delete)
         event.destroy
-        binding.pry
+
         total +=1
       end
     end
