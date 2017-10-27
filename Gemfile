@@ -22,6 +22,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'ckeditor'
 gem 'ranked-model'
 gem 'kaminari'
+gem 'ransack'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
