@@ -15,6 +15,12 @@ class Admin::EventRegistrationsController < AdminController
     if Array(params[:ticket_ids]).any?
       @registrations=@registrations.by_ticket(params[:ticket_ids])
     end
+    if params[:start_on].present?
+      @registrations=@registrations.where("created_at >=?",Date.parse(params[:start_on]).beginning_of_day)
+    end
+    if params[:end_on].present?
+      @registrations=@registrations.where("created_at <=?",Date.parse(params[:end_on]).end_of_day)
+    end
   end
   def destroy
     @registration=@event.registrations.find_by_uuid(params[:id])

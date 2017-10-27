@@ -46,6 +46,9 @@
       </label>
     <% end %>
   </p>
+  <p class="text">
+    报名日期：<%=date_field_tag :start_on,params[:start_on]%>~<%=date_field_tag :end_on,params[:end_on]%>
+  </p>
   <p class="text-right">
     <%=submit_tag "筛选",:class=>"btn btn-primary"%>
   </p>
